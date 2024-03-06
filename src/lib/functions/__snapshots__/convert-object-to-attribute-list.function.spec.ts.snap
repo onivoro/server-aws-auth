@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`convertObjectToAttributeList formats object to array, given {"email":null,"address":"","number":0,"age":337} 1`] = `
+[
+  {
+    "Name": "email",
+    "Value": "",
+  },
+  {
+    "Name": "phone",
+    "Value": "",
+  },
+  {
+    "Name": "address",
+    "Value": "",
+  },
+  {
+    "Name": "number",
+    "Value": "0",
+  },
+  {
+    "Name": "age",
+    "Value": "337",
+  },
+]
+`;

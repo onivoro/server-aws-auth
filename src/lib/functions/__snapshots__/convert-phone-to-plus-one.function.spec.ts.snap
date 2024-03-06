@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`convertObjectToAttributes removes dashes and prepends +1, given "(724) 545-9294" 1`] = `"+17245459294"`;
+
+exports[`convertObjectToAttributes removes dashes and prepends +1, given "+1(724) 545-9294" 1`] = `"+17245459294"`;
+
+exports[`convertObjectToAttributes removes dashes and prepends +1, given "+17245459294" 1`] = `"+17245459294"`;
+
+exports[`convertObjectToAttributes removes dashes and prepends +1, given "724-545-9294" 1`] = `"+17245459294"`;
+
+exports[`convertObjectToAttributes removes dashes and prepends +1, given "7245459294" 1`] = `"+17245459294"`;

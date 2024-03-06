@@ -1,0 +1,52 @@
+{
+    "name": "@onivoro/server-aws-auth",
+    "version": "0.0.30",
+    "repository": {
+        "url": "git+https://github.com/onivoro/server-aws-auth.git"
+    },
+    "main": "dist/cjs/index.js",
+    "module": "dist/esm/index.js",
+    "types": "dist/types/index.d.ts",
+    "files": [
+        "dist/*"
+    ],
+    "scripts": {
+        "onx": "onx",
+        "build": "onx Build",
+        "deploy": "onx Publish",
+        "test": "onx Test",
+        "update": "onx Update"
+    },
+    "exports": {
+        ".": {
+            "types": "./dist/types/index.d.ts",
+            "require": "./dist/cjs/index.js",
+            "import": "./dist/esm/index.js",
+            "default": "./dist/esm/lib.js"
+        }
+    },
+    "onx": {
+        "platform": "server"
+    },
+    "devDependencies": {
+        "@onivoro/cli": "*",
+        "@types/jest": "*",
+        "@types/node": "18.19.1",
+        "typescript": "*"
+    },
+    "engines": {
+        "node": "18.19.1",
+        "npm": "10.2.4"
+    },
+    "dependencies": {
+        "@nestjs/common": "^10.3.3",
+        "@nestjs/swagger": "^7.3.0",
+        "@onivoro/server-common": "^0.1.0",
+        "amazon-cognito-identity-js": "^6.3.7",
+        "aws-sdk": "^2.1571.0",
+        "axios": "^1.6.7",
+        "jsonwebtoken": "^9.0.2",
+        "jwk-to-pem": "^2.0.5",
+        "rxjs": "^7.8.1"
+    }
+}
