@@ -4,6 +4,7 @@ import { CognitoIdentityServiceProvider } from 'aws-sdk';
 import { AdminSetUserMFAPreferenceRequest, AssociateSoftwareTokenRequest, SetUserMFAPreferenceRequest, UsersListType } from 'aws-sdk/clients/cognitoidentityserviceprovider';
 import { AuthConfig } from '../classes/auth-config.class';
 import { convertObjectToAttributeList } from '../functions/convert-object-to-attribute-list.function';
+import { encode } from '@onivoro/server-common';
 
 @Injectable()
 export class AdminCognitoService {
@@ -13,11 +14,11 @@ export class AdminCognitoService {
   }
 
   async getSecretCode(AccessToken: string): Promise<any> {
-    return this.cognitoIdentityService.associateSoftwareToken({AccessToken}).promise();
+    return this.cognitoIdentityService.associateSoftwareToken({ AccessToken }).promise();
   }
 
   async vefifyTotpToken(AccessToken: string, UserCode: string) {
-    return this.cognitoIdentityService.verifySoftwareToken({AccessToken, UserCode}).promise();
+    return this.cognitoIdentityService.verifySoftwareToken({ AccessToken, UserCode }).promise();
   }
 
   deleteAdminUser(Username: string) {
@@ -195,11 +196,41 @@ export class AdminCognitoService {
     await this.cognitoIdentityService.setUserMFAPreference({
       AccessToken,
       SMSMfaSettings,
-      SoftwareTokenMfaSettings}).promise();
+      SoftwareTokenMfaSettings
+    }).promise();
 
-      await this.afterSetCognitoPreferredMfa(smsPreferred, AccessToken);
+    await this.afterSetCognitoPreferredMfa(smsPreferred, AccessToken);
+  }
+
+  async adminSetCognitoPreferredMfa(smsPreferred: boolean, Username: string, sub: string) {
+    const on = {
+      "Enabled": true,
+      "PreferredMfa": true
+    };
+    const off = {
+      "Enabled": false,
+      "PreferredMfa": false
+    };
+
+    let SMSMfaSettings, SoftwareTokenMfaSettings;
+
+    if (smsPreferred) {
+      SMSMfaSettings = on;
+      SoftwareTokenMfaSettings = off;
+    } else {
+      SMSMfaSettings = off;
+      SoftwareTokenMfaSettings = on;
+    }
+
+    await this.cognitoIdentityService.adminSetUserMFAPreference({
+      Username, UserPoolId: this.config.AWS_COGNITO_USER_POOL_ID,
+      SMSMfaSettings,
+      SoftwareTokenMfaSettings
+    }).promise();
+
+    await this.afterSetCognitoPreferredMfa(smsPreferred, encode({Username, sub}));
   }
 
   // this is only here as a hook that consuming modules can override
-  async afterSetCognitoPreferredMfa(smsPreferred: boolean, accessTokenRaw: string) {}
+  async afterSetCognitoPreferredMfa(smsPreferred: boolean, accessTokenRaw: string) { }
 }

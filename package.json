@@ -1,6 +1,6 @@
 {
     "name": "@onivoro/server-aws-auth",
-    "version": "0.0.30",
+    "version": "0.0.31",
     "repository": {
         "url": "git+https://github.com/onivoro/server-aws-auth.git"
     },
@@ -41,7 +41,7 @@
     "dependencies": {
         "@nestjs/common": "^10.3.3",
         "@nestjs/swagger": "^7.3.0",
-        "@onivoro/server-common": "^0.1.1",
+        "@onivoro/server-common": "^0.1.4",
         "amazon-cognito-identity-js": "^6.3.7",
         "aws-sdk": "^2.1571.0",
         "axios": "^1.6.7",
