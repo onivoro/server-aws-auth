@@ -1,6 +1,6 @@
 {
     "name": "@onivoro/server-aws-auth",
-    "version": "0.0.31",
+    "version": "0.0.32",
     "repository": {
         "url": "git+https://github.com/onivoro/server-aws-auth.git"
     },
