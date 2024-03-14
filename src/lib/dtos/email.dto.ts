@@ -4,6 +4,6 @@ export class EmailDto {
   @ApiProperty({ type: 'string' })
   email: string;
 
-  @ApiPropertyOptional({ type: 'string' })
+  @ApiPropertyOptional({ type: 'boolean' })
   isAnon: boolean;
 }
