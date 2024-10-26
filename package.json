@@ -29,24 +29,23 @@
         "platform": "server"
     },
     "devDependencies": {
-        "@onivoro/cli": "*",
+        "@onivoro/cli": "^22.0.4",
         "@types/jest": "*",
-        "@types/node": "18.19.1",
+        "@types/node": "22.8.1",
         "typescript": "*"
     },
     "engines": {
-        "node": "18.19.1",
-        "npm": "10.2.4"
+        "node": "22.10.0",
+        "npm": "10.9.0"
     },
     "dependencies": {
-        "@nestjs/common": "^10.3.3",
-        "@nestjs/swagger": "^7.3.0",
-        "@onivoro/server-common": "^0.1.4",
-        "amazon-cognito-identity-js": "^6.3.7",
-        "aws-sdk": "^2.1571.0",
-        "axios": "^1.6.7",
+        "@nestjs/common": "^10.4.6",
+        "@nestjs/swagger": "^7.4.2",
+        "@onivoro/server-common": "^22.0.1",
+        "amazon-cognito-identity-js": "^6.3.12",
+        "aws-sdk": "^2.1691.0",
+        "axios": "^1.7.7",
         "jsonwebtoken": "^9.0.2",
-        "jwk-to-pem": "^2.0.5",
-        "rxjs": "^7.8.1"
+        "jwk-to-pem": "^2.0.6"
     }
 }
